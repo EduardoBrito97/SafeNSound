@@ -4,12 +4,16 @@
 #define RST 6
 #define GPIO0 7
 #define buttonPin 4
+#define sensorPinOut 6
+#define sensorPinIn 7
 
 SoftwareSerial ESPSerial(2, 3); //RX, TX
 int buttonState = 0;
+int sensorState = 1;
 int previousButtonState = 0;
-String ssid = "GVT-501F";
-String password = "CP1211RMHRE";
+int previousSensorState = 0;
+String ssid = "CIn-GUESTS2";
+String password = "acessocin";
 String command;
 String strSerial;
 bool wifiStatus = false;
@@ -62,6 +66,8 @@ void wifiConnect(String ssid, String password)
   ESPSerial.println("AT+CWMODE=1\r");\
   delay(150);
   ESPSerial.println("AT+CWJAP=\"" +ssid+"\",\"" + password + "\"");
+
+  digitalWrite(13, HIGH);
 }
 
 void getLocalIP()
@@ -80,18 +86,22 @@ void setup() {
   pinMode(GPIO0, OUTPUT);
   pinMode(13, OUTPUT);
   pinMode(buttonPin, INPUT);
+  pinMode(sensorPinOut, OUTPUT);
+  pinMode(sensorPinIn, INPUT);
 
   digitalWrite(CH_PD, HIGH);
+  digitalWrite(sensorPinOut, HIGH);
   //digitalWrite(RST, HIGH);
   //digitalWrite(GPIO0, HIGH);
   digitalWrite(13, LOW);
+
+  sensorState = digitalRead(sensorPinIn);
+  previousSensorState = sensorState;
 
   Serial.begin(9600);
   ESPSerial.begin(9600);
   delay(200);
   Serial.println("ESP8266 ready to take AT commands!");
-
-  //wifiConnect("GVT-501F", "CP1211RMHRE");
 }
 
 void loop() {
@@ -138,10 +148,26 @@ void loop() {
   
   if(buttonState == HIGH && previousButtonState == LOW)
   {
-    wifiConnect(ssid, password);
-    
+    Serial.println("Botão Pressionado");    
     delay(100);
   }
   
   previousButtonState = buttonState;
+
+  sensorState = digitalRead(sensorPinIn);
+
+  //Serial.println(digitalRead(sensorPinIn));
+  
+  if(sensorState == HIGH && previousSensorState == LOW)
+  {
+    Serial.println("Bolsa fechou");    
+    delay(100);
+  }
+  else if(sensorState == LOW && previousSensorState == HIGH)
+  {
+    Serial.println("Bolsa abriu");
+    delay(100);
+  }
+  
+  previousSensorState = sensorState;
 }
