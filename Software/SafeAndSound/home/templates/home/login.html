@@ -1,0 +1,13 @@
+{% extends 'home/shared/layout.html' %}
+{% block content%}
+<h1>
+	Login
+</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ loginForm }}
+    </table>
+    <input type="submit" value="Submit" />
+</form>
+{% endblock%}

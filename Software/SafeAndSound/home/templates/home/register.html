@@ -1,0 +1,10 @@
+{% extends 'home/shared/layout.html' %}
+{% block content%}
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ currentUser }}
+    </table>
+    <input type="submit" value="Submit" />
+</form>
+{% endblock%}
