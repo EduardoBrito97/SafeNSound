@@ -36,7 +36,7 @@ def login(request):
     else:
         form = UserSignInForm()
         context = {'loginForm': form,
-                   'User': userService.get_user_from_request(request)}
+                   'currentUser': userService.get_user_from_request(request)}
         return render(request, 'home/login.html', context)
 
 
@@ -47,15 +47,16 @@ def register(request):
         if form.is_valid():
             user = form.save()
             userService.update_user_session(user, request)
-            context = {'currentUser': user}
-            return render(request, 'home/index.html', context)
+            return render(request, 'home/index.html', {})
         else:
-            context = {'currentUser': form}
+            form = UserSignUpForm()
+            context = {'userRegisterForm': form}
             return render(request, 'home/register.html', context)
 
     else:
         form = UserSignUpForm()
-        context = {'currentUser': form}
+        context = {'userRegisterForm': form,
+                   'currentUser': userService.get_user_from_request(request)}
         return render(request, 'home/register.html', context)
 
 
