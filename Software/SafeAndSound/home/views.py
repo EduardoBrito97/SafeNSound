@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .forms import UserSignUpForm, UserSignInForm
+from .forms import UserSignUpForm, UserSignInForm, UserManageForm
 from .service import userService
+from datetime import datetime
 
 
 # Create your views here.
@@ -20,12 +21,11 @@ def login(request):
             user = userService.find_user_by_username_and_password(currentUsername, currentPassword)
 
             if user is not None:
-                context = {'currentUser': user}
                 userService.update_user_session(user, request)
-                return render(request, 'home/index.html', context)
+                return index(request)
 
             else:
-                form = UserSignInForm()
+                form.add_error('username', 'Username e/ou password não está(ão) correto(s)')
                 context = {'loginForm': form}
                 return render(request, 'home/login.html', context)
 
@@ -47,7 +47,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             userService.update_user_session(user, request)
-            return render(request, 'home/index.html', {})
+            return index(request)
         else:
             form = UserSignUpForm()
             context = {'userRegisterForm': form}
@@ -63,5 +63,39 @@ def register(request):
 def logout(request):
     request.session['currentUsername'] = None
     request.session['currentPassword'] = None
-    context = {'currentUser': None}
-    return render(request, 'home/index.html', context)
+    return index(request)
+
+
+def manage(request):
+    user = userService.get_user_from_request(request)
+
+    if request.method == "POST":
+        form = UserManageForm(request.POST)
+        if form.is_valid():
+            try:
+                datetime.strptime(form.data['birthDate'], '%d/%m/%Y')
+                if user.password != form.data['password'] and form.data['password'] != form.data['confirmPassword']:
+                    form.add_error('confirmPassword', 'Passwords não são iguais')
+            except:
+                form.add_error('birthDate', 'Data em formato errado (DD/MM/YYYY)')
+                context = {'manageAccountForm': form,
+                           'currentUser': user}
+                if user.password != form.data['password'] and form.data['password'] != form.data['confirmPassword']:
+                    form.add_error('confirmPassword', 'Passwords não são iguais')
+                return render(request, 'home/manage.html', context)
+            user = userService.update_user(form, user)
+            user.save()
+            userService.update_user_session(user, request)
+            return index(request)
+
+        else:
+            context = {'manageAccountForm': form,
+                       'currentUser': user}
+            return render(request, 'home/manage.html', context)
+    else:
+        form = UserManageForm()
+        if user is not None:
+            form = UserManageForm(instance=user)
+        context = {'currentUser': user,
+                   'manageAccountForm': form}
+        return render(request, 'home/manage.html', context)
