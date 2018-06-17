@@ -12,6 +12,7 @@
     <a class="form-inline">
         <label class="col-sm-4 align-left"> {{ manageAccountForm.birthDate.label }}: </label>
                 {% render_field manageAccountForm.birthDate|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:DD/MM/YYYY" %}
+                            {{ manageAccountForm.errors.birthDate }}
     </a>
     <a class="form-inline">
         <label class="col-sm-4" > {{ manageAccountForm.email.label }}: </label>
@@ -47,6 +48,5 @@
     <input type="submit" class="btn btn-default align-right" value="Submit" />
 </form>
 <div class="col-lg-6">
-            <a class="col-sm-4">{{ manageAccountForm.errors.birthDate }} </a>
 </div>
 {% endblock%}
