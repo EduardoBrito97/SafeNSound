@@ -3,11 +3,55 @@
 <h1>
 	Register
 </h1>
-<form action="" method="post">
+
+<form action="" class="col-sm-12 col-md-10 col-lg-6" method="post">
     {% csrf_token %}
-    <table>
-    {{ userRegisterForm }}
-    </table>
-    <input type="submit" value="Submit" />
+    {% load widget_tweaks %}
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ userRegisterForm.username.label }}: </label>
+                {% render_field userRegisterForm.username|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Username" %}
+                            {{ userRegisterForm.errors.username }}
+    </a>
+
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ userRegisterForm.password.label }}: </label>
+                {% render_field userRegisterForm.password|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Password" %}
+                            {{ userRegisterForm.errors.password }}
+    </a>
+
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ userRegisterForm.confirmPassword.label }}: </label>
+                {% render_field userRegisterForm.confirmPassword|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Confirm Password" %}
+                            <a class="col-sm-4">{{ userRegisterForm.errors.confirmPassword }} </a>
+    </a>
+
+    <a class="form-inline align-left">
+        <label class="col-sm-4 align-left"> {{ userRegisterForm.birthDate.label }}: </label>
+                {% render_field userRegisterForm.birthDate|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:DD/MM/YYYY"%}
+                            {{ userRegisterForm.errors.birthDate }}
+    </a>
+    <a class="form-inline align-left">
+        <label class="col-sm-4" > {{ userRegisterForm.email.label }}: </label>
+                {% render_field userRegisterForm.email|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:johndoe@example.com" %}
+                            {{ userRegisterForm.errors.email }}
+    </a>
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ userRegisterForm.firstName.label }}: </label>
+                {% render_field userRegisterForm.firstName|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:John" %}
+                            {{ userRegisterForm.errors.firstName }}
+    </a>
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ userRegisterForm.lastName.label }}: </label>
+                {% render_field userRegisterForm.lastName|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Doe" %}
+                            {{ userRegisterForm.errors.lastName }}
+    </a>
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ userRegisterForm.phoneNumber.label }}: </label>
+                {% render_field userRegisterForm.phoneNumber|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:(11) 11111-1111" %}
+                            {{ userRegisterForm.errors.phoneNumber }}
+    </a>
+    <input type="submit" class="btn btn-default align-right" value="Submit" />
 </form>
+<div class="col-lg-6">
+</div>
 {% endblock%}

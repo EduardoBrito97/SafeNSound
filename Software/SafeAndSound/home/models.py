@@ -1,7 +1,4 @@
-import datetime
 from django.db import models
-from django.utils import timezone
-from django import forms
 
 
 class User(models.Model):
