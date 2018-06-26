@@ -52,7 +52,7 @@ class UserManageForm(ModelForm):
 
     class Meta:
         model = User
-        exclude = ['username', 'Address']
+        exclude = ['username', 'address']
         widgets = {
             'password': forms.TextInput(attrs={'type': 'password'}),
             'birthDate': forms.DateTimeInput(format='%d/%m/%Y')
@@ -64,8 +64,16 @@ class UserManageForm(ModelForm):
             self.add_error('birthDate', 'Date can not be in the future')
         return birth_date
 
+    def clean_confirmPassword(self):
+        password = self.cleaned_data['password']
+        confirm_password = self.cleaned_data['confirmPassword']
+
+        if (confirm_password is not None and password != confirm_password) and not not confirm_password:
+            self.add_error('confirmPassword', 'Password must match')
+        return confirm_password
+
 
 class AddressForm(ModelForm):
     class Meta:
         model = Address
-        exclude = ['street']
+        exclude = []

@@ -43,6 +43,31 @@
                 {% render_field manageAccountForm.confirmPassword|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Confirm Password" %}
                             <a class="col-sm-4">{{ manageAccountForm.errors.confirmPassword }} </a>
     </a>
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ addressRegisterForm.zipCode.label }}: </label>
+                {% render_field addressRegisterForm.zipCode|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:11111-111" %}
+                            {{ addressRegisterForm.errors.zipCode }}
+    </a>
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ addressRegisterForm.street.label }}: </label>
+                {% render_field addressRegisterForm.street|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Street One" %}
+                            {{ addressRegisterForm.errors.street }}
+    </a>
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ addressRegisterForm.number.label }}: </label>
+                {% render_field addressRegisterForm.number|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:11" %}
+                            {{ addressRegisterForm.errors.number }}
+    </a>
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ addressRegisterForm.complement.label }}: </label>
+                {% render_field addressRegisterForm.complement|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Apt. 111" %}
+                            {{ addressRegisterForm.errors.complement }}
+    </a>
+    <a class="form-inline align-left">
+        <label class="col-sm-4"> {{ addressRegisterForm.country.label }}: </label>
+                {% render_field addressRegisterForm.country|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Brazil" %}
+                            {{ addressRegisterForm.errors.country }}
+    </a>
     <input type="submit" class="btn btn-default align-right" value="Submit" />
 </form>
 <div class="col-lg-6">

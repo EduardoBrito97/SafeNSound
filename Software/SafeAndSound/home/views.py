@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import UserSignUpForm, UserSignInForm, UserManageForm
+from .forms import UserSignUpForm, UserSignInForm, UserManageForm, AddressForm
 from .service import userService
 
 
@@ -14,6 +14,7 @@ def login(request):
         form = UserSignInForm(request.POST)
 
         if form.is_valid():
+
             user = form.get_user()
             userService.update_user_session(user, request)
             return index(request)
@@ -31,19 +32,28 @@ def login(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserSignUpForm(request.POST)
+        user_form = UserSignUpForm(request.POST)
+        address_form = AddressForm(request.POST)
 
-        if form.is_valid():
-            user = form.save()
+        if user_form.is_valid() and address_form.is_valid():
+            user = user_form.save(commit=False)
+            address = address_form.save(commit=False)
+            address.save()
+            user.address = address
+            user.save()
             userService.update_user_session(user, request)
             return index(request)
         else:
-            context = {'userRegisterForm': form}
+            context = {'userRegisterForm': user_form,
+                       'addressRegisterForm': address_form,
+                       'currentUser': userService.get_user_from_request(request)}
             return render(request, 'home/register.html', context)
 
     else:
-        form = UserSignUpForm()
-        context = {'userRegisterForm': form,
+        user_form = UserSignUpForm()
+        address_form: AddressForm = AddressForm()
+        context = {'userRegisterForm': user_form,
+                   'addressRegisterForm': address_form,
                    'currentUser': userService.get_user_from_request(request)}
         return render(request, 'home/register.html', context)
 
@@ -58,21 +68,26 @@ def manage(request):
     user = userService.get_user_from_request(request)
 
     if request.method == "POST":
-        form = UserManageForm(request.POST)
-        if form.is_valid():
-            user = userService.update_user(form, user)
+        user_form = UserManageForm(request.POST)
+        address_form = AddressForm(request.POST)
+        if user_form.is_valid() and address_form.is_valid():
+            user = userService.update_user(user_form, user)
+            user.address = address_form.save()
             user.save()
             userService.update_user_session(user, request)
             return index(request)
-
         else:
-            context = {'manageAccountForm': form,
+            context = {'manageAccountForm': user_form,
+                       'addressRegisterForm': address_form,
                        'currentUser': user}
             return render(request, 'home/manage.html', context)
     else:
-        form = UserManageForm()
+        user_form = UserManageForm()
+        address_form = AddressForm()
         if user is not None:
-            form = UserManageForm(instance=user)
+            user_form = UserManageForm(instance=user)
+            address_form = AddressForm(instance=user.address)
         context = {'currentUser': user,
-                   'manageAccountForm': form}
+                   'addressRegisterForm': address_form,
+                   'manageAccountForm': user_form}
         return render(request, 'home/manage.html', context)

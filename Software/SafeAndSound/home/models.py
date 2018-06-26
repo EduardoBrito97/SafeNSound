@@ -9,16 +9,15 @@ class User(models.Model):
     firstName = models.CharField(max_length=50, verbose_name="First Name")
     lastName = models.CharField(max_length=50, verbose_name="Last Name")
     phoneNumber = models.CharField(max_length=50, verbose_name="Phone Number", null=True)
-    Address = models.ForeignKey('Address',
-                                on_delete=models.CASCADE,
-                                null=True)
+    address = models.OneToOneField('Address',
+                                   on_delete=models.CASCADE,
+                                   null=True)
 
     def __str__(self):
         return self.firstName + ' ' + self.lastName
 
 
 class Address(models.Model):
-    User = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
     zipCode = models.CharField(max_length=50, verbose_name="Zip Code", default=None, blank=True, null=True)
     street = models.CharField(max_length=50, verbose_name="Street", null=True)
     number = models.CharField(max_length=50, verbose_name="Number", null=True)
