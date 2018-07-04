@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content%}
+    <h3 class="cover-heading">
+        Device Listing
+    </h3>
+    {% if all_devices %}
+        {% for device in all_devices %}
+            {{ device.name }}
+        {% endfor %}
+    {% else %}
+        <p class="lead">No devices to show</p>
+    {% endif %}
+{% endblock%}
