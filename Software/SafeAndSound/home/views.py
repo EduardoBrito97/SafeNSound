@@ -5,7 +5,8 @@ from .service import userService
 
 def index(request):
     user = userService.get_user_from_request(request)
-    context = {'currentUser': user}
+    context = {'currentUser': user,
+               'current_page': 'Safe And Sound'}
     return render(request, 'home/index.html', context)
 
 
@@ -20,13 +21,15 @@ def login(request):
             return index(request)
 
         else:
-            context = {'loginForm': form}
+            context = {'loginForm': form,
+                       'current_page': 'Login'}
             return render(request, 'home/login.html', context)
 
     else:
         form = UserSignInForm()
         context = {'loginForm': form,
-                   'currentUser': userService.get_user_from_request(request)}
+                   'currentUser': userService.get_user_from_request(request),
+                   'current_page': 'Login'}
         return render(request, 'home/login.html', context)
 
 
@@ -46,7 +49,8 @@ def register(request):
         else:
             context = {'userRegisterForm': user_form,
                        'addressRegisterForm': address_form,
-                       'currentUser': userService.get_user_from_request(request)}
+                       'currentUser': userService.get_user_from_request(request),
+                       'current_page': 'Register'}
             return render(request, 'home/register.html', context)
 
     else:
@@ -54,7 +58,8 @@ def register(request):
         address_form: AddressForm = AddressForm()
         context = {'userRegisterForm': user_form,
                    'addressRegisterForm': address_form,
-                   'currentUser': userService.get_user_from_request(request)}
+                   'currentUser': userService.get_user_from_request(request),
+                   'current_page': 'Register'}
         return render(request, 'home/register.html', context)
 
 
@@ -79,7 +84,8 @@ def manage(request):
         else:
             context = {'manageAccountForm': user_form,
                        'addressRegisterForm': address_form,
-                       'currentUser': user}
+                       'currentUser': user,
+                       'current_page': 'Manage Account'}
             return render(request, 'home/manage.html', context)
     else:
         user_form = UserManageForm()
@@ -89,5 +95,6 @@ def manage(request):
             address_form = AddressForm(instance=user.address)
         context = {'currentUser': user,
                    'addressRegisterForm': address_form,
-                   'manageAccountForm': user_form}
+                   'manageAccountForm': user_form,
+                   'current_page': 'Manage Account'}
         return render(request, 'home/manage.html', context)

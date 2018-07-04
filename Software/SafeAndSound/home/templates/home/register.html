@@ -4,79 +4,142 @@
 	Register
 </h1>
 
-<form action="" class="col-sm-12 col-md-10 col-lg-6" method="post">
+<form action="" class="col-sm-12 col-md-10 col-lg-8 text-center" method="post">
     {% csrf_token %}
     {% load widget_tweaks %}
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ userRegisterForm.username.label }}: </label>
-                {% render_field userRegisterForm.username|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Username" %}
-                            {{ userRegisterForm.errors.username }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ userRegisterForm.username.label }}: </label>
+                {% render_field userRegisterForm.username|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Username" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.username %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
 
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ userRegisterForm.password.label }}: </label>
-                {% render_field userRegisterForm.password|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Password" %}
-                            {{ userRegisterForm.errors.password }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ userRegisterForm.password.label }}: </label>
+                {% render_field userRegisterForm.password|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Password" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.password %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
 
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ userRegisterForm.confirmPassword.label }}: </label>
-                {% render_field userRegisterForm.confirmPassword|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Confirm Password" %}
-                            <a class="col-sm-4">{{ userRegisterForm.errors.confirmPassword }} </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ userRegisterForm.confirmPassword.label }}: </label>
+                {% render_field userRegisterForm.confirmPassword|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Confirm Password" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.confirmPassword %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
 
-    <a class="form-inline align-left">
-        <label class="col-sm-4 align-left"> {{ userRegisterForm.birthDate.label }}: </label>
-                {% render_field userRegisterForm.birthDate|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:DD/MM/YYYY"%}
-                            {{ userRegisterForm.errors.birthDate }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ userRegisterForm.birthDate.label }}: </label>
+                {% render_field userRegisterForm.birthDate|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:DD/MM/YYYY"%}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.birthDate %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <a class="form-inline align-left">
-        <label class="col-sm-4" > {{ userRegisterForm.email.label }}: </label>
-                {% render_field userRegisterForm.email|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:johndoe@example.com" %}
-                            {{ userRegisterForm.errors.email }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6" > {{ userRegisterForm.email.label }}: </label>
+                {% render_field userRegisterForm.email|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:johndoe@example.com" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.email %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ userRegisterForm.firstName.label }}: </label>
-                {% render_field userRegisterForm.firstName|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:John" %}
-                            {{ userRegisterForm.errors.firstName }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ userRegisterForm.firstName.label }}: </label>
+                {% render_field userRegisterForm.firstName|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:John" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.firstName %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ userRegisterForm.lastName.label }}: </label>
-                {% render_field userRegisterForm.lastName|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Doe" %}
-                            {{ userRegisterForm.errors.lastName }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ userRegisterForm.lastName.label }}: </label>
+                {% render_field userRegisterForm.lastName|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Doe" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.lastName %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ userRegisterForm.phoneNumber.label }}: </label>
-                {% render_field userRegisterForm.phoneNumber|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:(11) 11111-1111" %}
-                            {{ userRegisterForm.errors.phoneNumber }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ userRegisterForm.phoneNumber.label }}: </label>
+                {% render_field userRegisterForm.phoneNumber|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:(11) 11111-1111" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.phoneNumber %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ addressRegisterForm.zipCode.label }}: </label>
-                {% render_field addressRegisterForm.zipCode|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:11111-111" %}
-                            {{ addressRegisterForm.errors.zipCode }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.zipCode.label }}: </label>
+                {% render_field addressRegisterForm.zipCode|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:11111-111" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.zipCode %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ addressRegisterForm.street.label }}: </label>
-                {% render_field addressRegisterForm.street|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Street One" %}
-                            {{ addressRegisterForm.errors.street }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.street.label }}: </label>
+                {% render_field addressRegisterForm.street|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Street One" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.street %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ addressRegisterForm.number.label }}: </label>
-                {% render_field addressRegisterForm.number|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:11" %}
-                            {{ addressRegisterForm.errors.number }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.number.label }}: </label>
+                {% render_field addressRegisterForm.number|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:11" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.number %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ addressRegisterForm.complement.label }}: </label>
-                {% render_field addressRegisterForm.complement|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Apt. 111" %}
-                            {{ addressRegisterForm.errors.complement }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.complement.label }}: </label>
+                {% render_field addressRegisterForm.complement|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Apt. 111" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.complement %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <a class="form-inline align-left">
-        <label class="col-sm-4"> {{ addressRegisterForm.country.label }}: </label>
-                {% render_field addressRegisterForm.country|append_attr:"class:form-control col-sm-4"|append_attr:"placeholder:Brazil" %}
-                            {{ addressRegisterForm.errors.country }}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.country.label }}: </label>
+                {% render_field addressRegisterForm.country|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Brazil" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  userRegisterForm.errors.country %}
+                    {{ error }}
+            {% endfor %}
+        </span>
     </a>
-    <input type="submit" class="btn btn-default align-right" value="Submit" />
+    <input type="submit" class="btn btn-default form-submit" value="Submit" />
 </form>
-<div class="col-lg-6">
-</div>
 {% endblock%}

@@ -26,7 +26,7 @@ class UserSignUpForm(ModelForm):
         password = self.cleaned_data['password']
         confirm_password = self.cleaned_data['confirmPassword']
         if password != confirm_password:
-            self.add_error('confirmPassword', 'Password and Confirm Password must match')
+            self.add_error('confirmPassword', 'Passwords must match')
         return confirm_password
 
 
