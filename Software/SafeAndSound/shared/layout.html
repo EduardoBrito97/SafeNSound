@@ -35,17 +35,20 @@
                         <li {% if current_page == 'Safe And Sound' %} class="active" {% endif %}>
                             <a href="/">Home</a>
                         </li>
-                        <li {% if current_page == 'Register' %} class="active" {% endif %}>
-                            <a href="/home/register">Register</a>
-                        </li>
                         {% if currentUser %}
                             <li {% if current_page == 'Manage Account' %}class="active" {% endif %}>
                                 <a href="/home/manage">{{ currentUser.email }}</a>
+                            </li>
+                            <li {% if current_page == 'List Devices' %} class="active" {% endif %}>
+                                <a href="/devices/list">Devices</a>
                             </li>
                             <li>
                                 <a href="/home/logout">Log out</a>
                             </li>
                         {% else %}
+                            <li {% if current_page == 'Register' %} class="active" {% endif %}>
+                                <a href="/home/register">Register</a>
+                            </li>
                             <li {% if current_page == 'Login' %} class="active" {% endif %}>
                                 <a href="/home/login">Login</a>
                             </li>
@@ -55,7 +58,7 @@
             </div>
         </div>
 
-        <div class="site-wrapper-inner">
+        <div class="site-wrapper-inner" id="block-content">
                 {% block content %}
                 {% endblock %}
         </div>

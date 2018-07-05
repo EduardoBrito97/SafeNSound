@@ -16,10 +16,18 @@ class DeviceRegister(ModelForm):
         choices = deviceService.get_device_choices()
         self.fields['device'] = forms.ChoiceField(choices=choices, widget=forms.Select())
 
+    def clean_device(self):
+        try:
+            device = Device.objects.get(bluetooth_id=self.cleaned_data['device'])
+            self.add_error('device', 'Device already registered.')
+        except:
+            return self.cleaned_data['device']
+
     def save(self, commit=True, user=None):
         device = Device()
         device.name = self.cleaned_data['name']
         device.bluetooth_id = self.cleaned_data['device']
         device.isAlarmEnabled = self.cleaned_data['isAlarmEnabled']
         device.userOwner = user
-        device.save()
+        if user is not None:
+            device.save()

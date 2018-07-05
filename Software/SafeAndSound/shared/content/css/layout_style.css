@@ -142,3 +142,19 @@ body {
 .form-submit {
     margin-left: 85%;
 }
+
+.tableTitle{
+    font-weight: bold;
+    text-align:left;
+    padding-left: 3%;
+
+}
+
+.custom-link{
+    font-weight: bold;
+}
+
+.tableCell{
+    text-align:left;
+    padding-left: 3%;
+}

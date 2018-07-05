@@ -4,12 +4,32 @@
         Device Listing
     </h3>
     {% if all_devices %}
-        {% for device in all_devices %}
-            <p>
-             {{ device.userOwner }}, {{ device.name }} <a style="font-weight: bold" href="/devices/delete/{{ device.id }}"> Delete </a>
-            </p>
-        {% endfor %}
+        <table class="table-striped align-content-center" style="min-width: 1110px">
+        <tr>
+            <th class="tableTitle"> Device Name </th>
+            <th class="tableTitle"> Alarm Enabled </th>
+            <th class="tableTitle"></th>
+            <th class="tableTitle">
+                <a class="custom-link btn btn-default" href="/devices/register">
+                    Add new
+                </a>
+            </th>
+        </tr>
+            {% for device in all_devices %}
+                <tr>
+                    <td class="tableCell">{{ device.name }}</td>
+                    <td class="tableCell">{{ device.isAlarmEnabled }}</td>
+                    <td class="tableCell" style="text-align: right!important;">
+                        <button value="{{ device.id }}" name="{{ device.name }}" class="custom-link btn btn-danger" id="delete-btn"> Delete </button>
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </table>
+
     {% else %}
-        <p class="lead">No devices to show</p>
+        <p class="lead">No devices to show.
+            <a class="custom-link" href="/devices/register" style="font-weight:bold">Add your first device!</a>
+        </p>
     {% endif %}
 {% endblock%}
