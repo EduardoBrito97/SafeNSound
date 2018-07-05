@@ -3,7 +3,6 @@
 #define OPENING_SENSOR_PIN    2
 #define OPENING_SENSOR_NAME   "Opening Sensor"
 #define OPENING_SENSOR_ID     69
-#define ONBOARD_LED           13 //Uno
 
 KNoTThing thing;
 
@@ -35,12 +34,13 @@ static int sensor_write(uint8_t *val)
 void setup(){
   Serial.begin(9600);
   
-  pinMode(ONBOARD_LED,  OUTPUT);
   pinMode(OPENING_SENSOR_PIN,   INPUT);
   
   thing.init("Bag");
   thing.registerBoolData(OPENING_SENSOR_NAME, OPENING_SENSOR_ID, KNOT_TYPE_ID_SWITCH,
     KNOT_UNIT_NOT_APPLICABLE, sensor_read, sensor_write);
+
+  thing.registerDefaultConfig(OPENING_SENSOR_ID, KNOT_EVT_FLAG_TIME, 1, 0, 0, 0, 0);
 
   Serial.println(F("Remote Opening Sensor KNoT"));
 }
