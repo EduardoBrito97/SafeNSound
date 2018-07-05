@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="388b09dc-aa4e-4439-9daa-5a063e19ea5e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/notifications/templates/notifications/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notifications/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ca3cfbb2-a77c-4c65-9fb4-7e083942dedf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ca3cfbb2-a77c-4c65-9fb4-7e083942dedf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SafeAndSound/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SafeAndSound/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SafeAndSound/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/SafeAndSound/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SafeAndSoundEngine.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/SafeAndSoundEngine.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devices/templates/devices/device_register.html" beforeDir="false" afterPath="$PROJECT_DIR$/devices/templates/devices/device_register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="388b09dc-aa4e-4439-9daa-5a063e19ea5e" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,24 +25,6 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="Django default" type="feb32156:DbDataSourceImpl" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
-        <item name="notifications_notification: table" type="ffe0bd85:SqliteImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -64,7 +36,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/notifications/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="90">
               <caret line="8" column="29" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="29" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -310,14 +282,14 @@
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49973017" visible="true" weight="0.39894179" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49973017" weight="0.39894179" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24986508" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Database Console" weight="0.32910052" />
+      <window_info anchor="bottom" id="Database Console" order="14" weight="0.32910052" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32910052" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.32946146" />
     </layout>
@@ -742,7 +714,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/notifications/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="90">
           <caret line="8" column="29" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="29" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
