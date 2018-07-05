@@ -8,7 +8,7 @@
         {% load widget_tweaks %}
         <a class="form-inline col-sm-12">
             <label class="col-sm-6"> {{ device_form.name.label }}: </label>
-                    {% render_field device_form.name|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Brazil" %}
+                    {% render_field device_form.name|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Bag" %}
             <div class="col-sm-6"></div>
             <span class="formError col-sm-6 text-left">
                 {% for error in  device_form.errors.name %}

@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content%}
+    <h3 class="cover-heading">
+        Notifications
+    </h3>
+    {% if notifications %}
+        <table class="table-striped align-content-center" style="min-width: 1110px">
+        <tr>
+            <th class="tableTitle"> Device Name </th>
+            <th class="tableTitle"> Message </th>
+        </tr>
+            {% for notification in notifications %}
+                <tr>
+                    <td class="tableCell">{{ notification.device.name }}</td>
+                    <td class="tableCell">{{ notification.message}}</td>
+                </tr>
+
+            {% endfor %}
+        </table>
+
+    {% else %}
+        <p class="lead">No new notifications.</p>
+    {% endif %}
+{% endblock%}
