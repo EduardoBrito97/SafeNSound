@@ -15,10 +15,17 @@ def list_devices(request):
 def register_devices(request):
     if request.method == 'POST':
         form = DeviceRegister(request.POST)
-        form.save()
-        return index(request)
+        if form.is_valid():
+            form.save()
+            return index(request)
+        else:
+            context = {'currentUser': userService.get_user_from_request(request),
+                       'current_page': 'Register Device', # current_page dá o título da página e também deixa o link na barra de cima selecionado
+                       'device_form': form}  # DeviceRegister cria um novo form de Device
+            return render(request, 'devices/device_register.html', context)
     else:
+        form = DeviceRegister()
         context = {'currentUser': userService.get_user_from_request(request),
                    'current_page': 'Register Device', #current_page dá o título da página e também deixa o link na barra de cima selecionado
-                   'device_form': DeviceRegister()}  #DeviceRegister cria um novo form de Device
+                   'device_form': form}  #DeviceRegister cria um novo form de Device
         return render(request, 'devices/device_register.html', context)
