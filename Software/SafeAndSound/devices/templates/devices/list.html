@@ -5,7 +5,9 @@
     </h3>
     {% if all_devices %}
         {% for device in all_devices %}
-            {{ device }}
+            <p>
+             {{ device.userOwner }}, {{ device.name }} <a style="font-weight: bold" href="/devices/delete/{{ device.id }}"> Delete </a>
+            </p>
         {% endfor %}
     {% else %}
         <p class="lead">No devices to show</p>

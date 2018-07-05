@@ -9,16 +9,17 @@ class DeviceRegister(ModelForm):
 
     class Meta:
         model = Device
-        exclude = ['bluetooth_id']
+        exclude = ['bluetooth_id', 'userOwner']
 
     def __init__(self, *args, **kwargs):
         super(DeviceRegister, self).__init__(*args, **kwargs)
         choices = deviceService.get_device_choices()
         self.fields['device'] = forms.ChoiceField(choices=choices, widget=forms.Select())
 
-    def save(self, commit=True):
+    def save(self, commit=True, user=None):
         device = Device()
         device.name = self.cleaned_data['name']
         device.bluetooth_id = self.cleaned_data['device']
         device.isAlarmEnabled = self.cleaned_data['isAlarmEnabled']
+        device.userOwner = user
         device.save()
