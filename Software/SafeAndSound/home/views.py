@@ -55,7 +55,7 @@ def register(request):
 
     else:
         user_form = UserSignUpForm()
-        address_form: AddressForm = AddressForm()
+        address_form = AddressForm()
         context = {'userRegisterForm': user_form,
                    'addressRegisterForm': address_form,
                    'currentUser': userService.get_user_from_request(request),
