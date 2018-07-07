@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from home.service import userService
 from .models import Device
-from .forms import DeviceRegister
+from .forms import DeviceRegister, DeviceEdit
 from home.views import index
 
 
@@ -44,4 +44,37 @@ def delete_device(request, device_id):
         return index(request)
     except:
         context = {'currentUser': userService.get_user_from_request(request)}
-        return render(request, 'devices/delete.html', context)
+        return render(request, 'devices/device_not_found.html', context)
+
+
+def edit(request, device_id):
+    user = userService.get_user_from_request(request)
+    try:
+        device = Device.objects.get(id=device_id)
+        if request.method == "POST":
+            form = DeviceEdit(request.POST)
+            if form.is_valid():
+                device.name = form.cleaned_data["name"]
+                device.isAlarmEnabled = form.cleaned_data["isAlarmEnabled"]
+                device.save()
+                return index(request)
+            else:
+                context = {
+                    "currentUser": user,
+                    "current_page": "Edit Device " + device.name,
+                    "device_form": form,
+                    "device": device
+                }
+                return render(request, "devices/edit.html", context)
+        else:
+            form = DeviceEdit(instance=device)
+            context = {
+                "currentUser": user,
+                "current_page": "Edit Device " + device.name,
+                "device_form": form,
+                "device": device
+            }
+            return render(request, "devices/edit.html", context)
+    except:
+        context = {'currentUser': userService.get_user_from_request(request)}
+        return render(request, 'devices/device_not_found.html', context)

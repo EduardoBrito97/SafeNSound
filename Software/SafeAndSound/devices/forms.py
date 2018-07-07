@@ -31,3 +31,9 @@ class DeviceRegister(ModelForm):
         device.userOwner = user
         if user is not None:
             device.save()
+
+
+class DeviceEdit(ModelForm):
+    class Meta:
+        model = Device
+        exclude = ['bluetooth_id', 'userOwner']

@@ -8,8 +8,8 @@
         <tr>
             <th class="tableTitle"> Device Name </th>
             <th class="tableTitle"> Alarm Enabled </th>
-            <th class="tableTitle"></th>
-            <th class="tableTitle">
+            <th class="tableTitle"> &nbsp;</th>
+            <th class="tableTitle" style="text-align: right!important;">
                 <a class="custom-link btn btn-default" href="/devices/register">
                     Add new
                 </a>
@@ -19,8 +19,10 @@
                 <tr>
                     <td class="tableCell">{{ device.name }}</td>
                     <td class="tableCell">{{ device.isAlarmEnabled }}</td>
-                    <td class="tableCell" style="text-align: right!important;">
+                    <th class="tableTitle"> &nbsp;</th>
+                    <td class="tableCell" style="text-align: left!important;">
                         <button value="{{ device.id }}" name="{{ device.name }}" class="custom-link btn btn-danger" id="delete-btn"> Delete </button>
+                        <a href="/devices/edit/{{ device.id }}" class="custom-link btn btn-info"> Edit </a>
                     </td>
                 </tr>
 

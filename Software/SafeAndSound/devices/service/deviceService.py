@@ -1,4 +1,3 @@
-from bluetooth import *
 from knotpy import *
 
 
