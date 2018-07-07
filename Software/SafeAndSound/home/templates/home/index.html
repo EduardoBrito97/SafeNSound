@@ -1,6 +1,25 @@
 {% extends 'layout.html' %}
 {% block content%}
-<h1>
-	Index Page
-</h1>
+    {% if currentUser %}
+        <h3 class="cover-heading">
+            Welcome back, <a style="font-weight:bold">{{ currentUser.firstName }} {{ currentUser.lastName }}</a>!
+        </h3>
+        <p class="lead">
+            What do you want from us today? Do you want to check the <a href="/devices/list" class="custom-link">devices</a> you own? <br>
+            Better! you should <a class="custom-link" href="/devices/register" style="font-weight:bold">add</a> some more!<br>
+            Or hey, why don't you check your latest <a href="/notifications/" class="custom-link">news</a> from your devices? <br>
+        </p>
+    {% else %}
+        <h3 class="cover-heading">
+            Why use Safe And Sound?
+        </h3>
+        <p class="lead">
+            Our gadget allows you, user, to have a better control of your purse, bag, lock or whatever you use to keep your things, so you can keep everything Safe And Sound!.
+        </p>
+        <p class="lead">
+          <a href="/home/register" class="btn btn-lg btn-default">Register now!</a>
+        </p>
+        <p>Already an user? <a href="/home/login" class="custom-link">Login</a> now!</p>
+    {% endif %}
+
 {% endblock%}

@@ -1,0 +1,132 @@
+{% extends 'layout.html' %}
+{% block content%}
+<h1>
+	Manage
+</h1>
+
+<form action="" class="col-sm-12 col-md-10 col-lg-8" method="post">
+    {% csrf_token %}
+    {% load widget_tweaks %}
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6 float-lg-left"> {{ manageAccountForm.birthDate.label }}: </label>
+                {% render_field manageAccountForm.birthDate|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:DD/MM/YYYY"%}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.birthDate %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6" > {{ manageAccountForm.email.label }}: </label>
+                {% render_field manageAccountForm.email|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:johndoe@example.com" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.email %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ manageAccountForm.firstName.label }}: </label>
+                {% render_field manageAccountForm.firstName|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:John" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.firstName %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ manageAccountForm.lastName.label }}: </label>
+                {% render_field manageAccountForm.lastName|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Doe" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.lastName %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ manageAccountForm.phoneNumber.label }}: </label>
+                {% render_field manageAccountForm.phoneNumber|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:(11) 11111-1111" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.phoneNumber %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ manageAccountForm.password.label }}: </label>
+                {% render_field manageAccountForm.password|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Password" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.password %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12 ">
+        <label class="col-sm-6"> {{ manageAccountForm.confirmPassword.label }}: </label>
+                {% render_field manageAccountForm.confirmPassword|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Confirm Password" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.confirmPassword %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.zipCode.label }}: </label>
+                {% render_field addressRegisterForm.zipCode|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:11111-111" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.zipCode %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.street.label }}: </label>
+                {% render_field addressRegisterForm.street|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Street One" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.street %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.number.label }}: </label>
+                {% render_field addressRegisterForm.number|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:11" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.number %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.complement.label }}: </label>
+                {% render_field addressRegisterForm.complement|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Apt. 111" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.complement %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <a class="form-inline col-sm-12">
+        <label class="col-sm-6"> {{ addressRegisterForm.country.label }}: </label>
+                {% render_field addressRegisterForm.country|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Brazil" %}
+        <div class="col-sm-6"></div>
+        <span class="formError col-sm-6 text-left">
+            {% for error in  manageAccountForm.errors.country %}
+                    {{ error }}
+            {% endfor %}
+        </span>
+    </a>
+    <input type="submit" class="btn btn-default form-submit" value="Submit" />
+</form>
+{% endblock%}

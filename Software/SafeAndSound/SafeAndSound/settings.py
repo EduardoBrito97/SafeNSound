@@ -32,12 +32,15 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
+    'devices.apps.DevicesConfig',
+    'notifications.apps.NotificationsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -108,11 +111,49 @@ LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Fortaleza'
 
-USE_I18N = True
+DATETIME_INPUT_FORMATS = [
+    '%Y-%m-%d %H:%M:%S',     # '2006-10-25 14:30:59'
+    '%Y-%m-%d %H:%M:%S.%f',  # '2006-10-25 14:30:59.000200'
+    '%Y-%m-%d %H:%M',        # '2006-10-25 14:30'
+    '%Y-%m-%d',              # '2006-10-25'
+    '%m/%d/%Y %H:%M:%S',     # '10/25/2006 14:30:59'
+    '%m/%d/%Y %H:%M:%S.%f',  # '10/25/2006 14:30:59.000200'
+    '%m/%d/%Y %H:%M',        # '10/25/2006 14:30'
+    '%m/%d/%Y',              # '10/25/2006'
+    '%m/%d/%y %H:%M:%S',     # '10/25/06 14:30:59'
+    '%m/%d/%y %H:%M:%S.%f',  # '10/25/06 14:30:59.000200'
+    '%m/%d/%y %H:%M',        # '10/25/06 14:30'
+    '%m/%d/%y',              # '10/25/06'
+]
 
-USE_L10N = True
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y', # '2006-10-25', '10/25/2006', '10/25/06'
+    '%b %d %Y', '%b %d, %Y',            # 'Oct 25 2006', 'Oct 25, 2006'
+    '%d %b %Y', '%d %b, %Y',            # '25 Oct 2006', '25 Oct, 2006'
+    '%B %d %Y', '%B %d, %Y',            # 'October 25 2006', 'October 25, 2006'
+    '%d %B %Y', '%d %B, %Y',            # '25 October 2006', '25 October, 2006'
+    '%m/%d/%Y %H:%M:%S',                # '10/25/2006 14:30:59'
+    '%m/%d/%Y %H:%M:%S.%f',             # '10/25/2006 14:30:59.000200'
+    '%m/%d/%Y %H:%M',                   # '10/25/2006 14:30'
+    '%m/%d/%Y',                         # '10/25/2006'
+    '%m/%d/%y %H:%M:%S',                # '10/25/06 14:30:59'
+    '%m/%d/%y %H:%M:%S.%f',             # '10/25/06 14:30:59.000200'
+    '%m/%d/%y %H:%M',                   # '10/25/06 14:30'
+    '%m/%d/%y',                         # '10/25/06'
+    '%d/%m/%Y',                         # '25/10/2000'
+]
 
-USE_TZ = True
+DATE_FORMAT = [
+    '%d/%m/%Y',
+]
+
+DATETIME_FORMAT = [
+    '%d/%m/%Y',
+]
+
+USE_L10N = False
+USE_I18N = False
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -120,7 +161,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    'shared/content',
-]
+STATICFILES_DIRS = ([
+    os.path.join(BASE_DIR, 'shared/'),
+])

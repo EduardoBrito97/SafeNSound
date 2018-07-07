@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block content%}
+    <h3 class="cover-heading">
+        Device Register
+    </h3>
+    <form action="" class="col-sm-12 col-md-10 col-lg-8 form-signin text-center" method="post">
+        {% csrf_token %}
+        {% load widget_tweaks %}
+        <a class="form-inline col-sm-12">
+            <label class="col-sm-6"> {{ device_form.name.label }}: </label>
+                    {% render_field device_form.name|append_attr:"class:form-control col-sm-6"|append_attr:"placeholder:Bag" %}
+            <div class="col-sm-6"></div>
+            <span class="formError col-sm-6 text-left">
+                {% for error in  device_form.errors.name %}
+                        {{ error }}
+                {% endfor %}
+            </span>
+        </a>
+        <a class="form-inline col-sm-12">
+            <label class="col-sm-6"> {{ device_form.device.label }}: </label>
+                    {% render_field device_form.device|append_attr:"class:form-control col-sm-6" %}
+            <div class="col-sm-6"></div>
+            <span class="formError col-sm-6 text-left">
+                {% for error in  device_form.errors.device %}
+                        {{ error }}
+                {% endfor %}
+            </span>
+        </a>
+        <a class="form-inline col-sm-12">
+            <label class="col-sm-6"> {{ device_form.isAlarmEnabled.label }}: </label>
+                    {% render_field device_form.isAlarmEnabled|append_attr:"class:form-control" %}
+            <div class="col-sm-6"></div>
+            <span class="formError col-sm-6 text-left">
+                {% for error in  device_form.errors.isAlarmEnabled %}
+                        {{ error }}
+                {% endfor %}
+            </span>
+        </a>
+    <input type="submit" class="btn btn-default form-submit" value="Submit" />
+</form>
+
+{% endblock%}
