@@ -40,9 +40,9 @@ static int bluetooth_sensor_read(uint8_t *val)
   
   Serial.print("Bluetooth Status: ");
   if(*val)
-    Serial.println(F("Disconnected"));
-  else
     Serial.println(F("Connected"));
+  else
+    Serial.println(F("Disconnected"));
   return 0;
 }
 
