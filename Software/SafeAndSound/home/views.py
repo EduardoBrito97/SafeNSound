@@ -3,10 +3,11 @@ from .forms import UserSignUpForm, UserSignInForm, UserManageForm, AddressForm
 from .service import userService
 
 
-def index(request):
+def index(request, message=None):
     user = userService.get_user_from_request(request)
     context = {'currentUser': user,
-               'current_page': 'Safe And Sound'}
+               'current_page': 'Safe And Sound',
+               'message': message}
     return render(request, 'home/index.html', context)
 
 

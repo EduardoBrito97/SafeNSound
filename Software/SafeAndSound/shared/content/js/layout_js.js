@@ -8,4 +8,11 @@ $(document).ready(function () {
             window.location.href = '/devices/delete/'+device_id;
         }
     })
+
+    $('#delete-news-btn').click(function () {
+        if (confirm('Are you sure you want clear all your notifications?'))
+        {
+            window.location.href = '/notifications/delete/';
+        }
+    })
 });

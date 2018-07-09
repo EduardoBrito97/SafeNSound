@@ -1,5 +1,8 @@
 {% extends 'layout.html' %}
 {% block content%}
+    {% if message %}
+        <p class="alert alert-info"> {{ message }} </p>
+    {% endif %}
     {% if currentUser %}
         <h3 class="cover-heading">
             Welcome back, <a style="font-weight:bold">{{ currentUser.firstName }} {{ currentUser.lastName }}</a>!
