@@ -10,7 +10,7 @@ def had_changes(uuid, sensor_id, data = None):
 	return (data != new_data) and sensor_id == 69
 
 def is_to_notify(isAlarmEnabled, bluetooth_enabled):
-	return isAlarmEnabled || bluetooth_enabled
+	return isAlarmEnabled or not bluetooth_enabled
 
 def notify(device, user, wasopen):
 	if wasopen:
@@ -38,8 +38,8 @@ while True:
 			bluetooth_enabled = alldata[0]['data']['value'] 
 		if had_changes(uuid, sensor_id, data):
 			data = alldata[0]['data']['value']
-			device = cursor.execute('''SELECT id, userOwner_id, isAlarmEnabled FROM devices_device WHERE bluetooth_id=?''', (uuid,)).fetchone()		
-			if is_to_notify(device[2]):
+			device = cursor.execute('''SELECT id, userOwner_id, isAlarmEnabled FROM devices_device WHERE bluetooth_id=?''', (uuid,)).fetchone()
+			if is_to_notify(bool(device[2]), bluetooth_enabled):
 				try:
 					notify(device[0], device[1], not data)
 				except:

@@ -9,6 +9,7 @@
             <tr>
                 <th class="tableTitle"> Device Name </th>
                 <th class="tableTitle"> Message </th>
+                <th class="tableTitle"> <button class="custom-link btn btn-danger" id="delete-news-btn"> Clean Notifications </button></th>
             </tr>
                 {% for notification in new_notifications %}
                     <tr>
@@ -27,11 +28,19 @@
             <tr>
                 <th class="tableTitle"> Device Name </th>
                 <th class="tableTitle"> Message </th>
+                {% if not new_notifications %}
+                    <th> <button class="custom-link btn btn-danger" id="delete-news-btn"> Clean Notifications </button></th>
+                    </th>
+
+                {% endif %}
             </tr>
                 {% for notification in notifications %}
                     <tr>
                         <td class="tableCell">{{ notification.device.name }}</td>
                         <td class="tableCell">{{ notification.message}}</td>
+                        {% if not new_notifications %}
+                            <td></td>
+                        {% endif %}
                     </tr>
 
                 {% endfor %}
